@@ -1,0 +1,128 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "photo": "catalog-image.png",
+      "title": "Декоративный куст, с шикарными листьями, горшком",
+      "price": "2299",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 2,
+      "photo": "catalog-image.png",
+      "title": "Кресло ARONIA, розовый",
+      "price": "4599",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 3,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1599",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 4,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1199",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 5,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1299",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 6,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1399",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 7,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1999",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 8,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1899",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 9,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1799",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 10,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1699",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    }
+  ]
+}
