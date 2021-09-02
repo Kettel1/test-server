@@ -123,6 +123,39 @@
         "catalog-recomended.png",
         "catalog-recomended.png"
       ]
+    }, {
+      "id": 11,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1699",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    }, {
+      "id": 12,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1699",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    }, {
+      "id": 12,
+      "photo": "catalog-image.png",
+      "title": "Кресло-качалка",
+      "price": "1699",
+      "size": "120 x 212 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
     }
   ]
 }
