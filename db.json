@@ -4,7 +4,7 @@
       "id": 1,
       "photo": "catalog-image.png",
       "title": "Декоративный куст, с шикарными листьями, горшком",
-      "price": "2299",
+      "price": "22999",
       "size": "120 x 212 x 46",
       "productPhotos": [
         "catalog-recomended.png",
@@ -123,7 +123,8 @@
         "catalog-recomended.png",
         "catalog-recomended.png"
       ]
-    }, {
+    },
+    {
       "id": 11,
       "photo": "catalog-image.png",
       "title": "Кресло-качалка",
@@ -134,7 +135,8 @@
         "catalog-recomended.png",
         "catalog-recomended.png"
       ]
-    }, {
+    },
+    {
       "id": 12,
       "photo": "catalog-image.png",
       "title": "Кресло-качалка",
@@ -145,8 +147,9 @@
         "catalog-recomended.png",
         "catalog-recomended.png"
       ]
-    }, {
-      "id": 12,
+    },
+    {
+      "id": 13,
       "photo": "catalog-image.png",
       "title": "Кресло-качалка",
       "price": "1699",
@@ -156,6 +159,20 @@
         "catalog-recomended.png",
         "catalog-recomended.png"
       ]
+    }
+  ],
+  "cart": [
+    {
+      "test": "test",
+      "id": 23211
+    },
+    {
+      "test": "test",
+      "id": 232111
+    },
+    {
+      "test": "test",
+      "id": 2321112
     }
   ]
 }

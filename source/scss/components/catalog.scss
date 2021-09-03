@@ -91,16 +91,21 @@ body {
   width: 17px;
   background-size: 100%;
   background-repeat: no-repeat;
+  cursor: pointer;
+
+  &--added {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+    cursor: auto;
+  }
 }
 
 .product__button__wrapper{
   position: absolute;
   top: 3px;
   right: 0;
-
-  & button {
-    cursor: pointer;
-  }
 }
 
 .product__photos__frame {

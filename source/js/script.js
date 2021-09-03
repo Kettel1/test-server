@@ -1,17 +1,17 @@
-const url = 'http://localhost:3001/products';
+const url = 'http://localhost:8000/products';
+const urlCart = 'http://localhost:8000/cart'
 
 const fetching = async () => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        renderInfo(data, 0, 5)
+        renderInfo(data)
     } catch (e) {
         console.log(e)
     }
 }
 
 fetching()
-
 
 const renderInfo = (products) => {
     const product = document.querySelector('.product');
@@ -79,106 +79,138 @@ const renderInfo = (products) => {
 
     itemBox.forEach((good) => {
         good.addEventListener('click', e => {
-            good.disabled = true;
-            const cartData = getCartData() || {}
-            const parentBox = e.target.closest('.product__wrapper');
-            const itemId = parentBox.getAttribute('id');
-            const itemTitle = parentBox.querySelector('.product__title').innerHTML;
-            const itemPrice = parentBox.querySelector('.product__price__value').innerHTML
-            console.log(itemId);
-            console.log(itemTitle);
+            if (!good.hasAttribute('data-card', 'true')) {
+                good.setAttribute('data-card', 'true')
+                good.disabled = true;
 
-            if (cartData.hasOwnProperty(itemId)) {
-                cartData[itemId][3] += 1;
-            } else {
-                cartData[itemId] = [itemTitle, itemPrice, itemId, 1];
+                const cartData = getCartData() || {}
+                const parentBox = e.target.closest('.product__wrapper');
+                const itemId = parentBox.getAttribute('id');
+                const itemTitle = parentBox.querySelector('.product__title').innerHTML;
+                const itemPrice = parentBox.querySelector('.product__price__value').innerHTML
+                const itemBtn = parentBox.querySelector('.product__cart')
+                itemBtn.classList.replace('product__cart', 'product__cart--added')
+                itemBtn.innerHTML = 'В корзине';
+
+                if (cartData.hasOwnProperty(itemId)) {
+                    cartData[itemId][3] += 1;
+                } else {
+                    cartData[itemId] = [itemTitle, itemPrice, itemId, 1];
+                }
+
+                if (!setCartData(cartData)) {
+                    good.disabled = false;
+                }
             }
 
-            if (!setCartData(cartData)) {
-                good.disabled = false;
-            }
         })
     })
 }
+
+const submit = async (method, body) => {
+    const response = await fetch(urlCart, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+
+        body: JSON.stringify(body),
+    })
+
+    let result = await response.json();
+    console.log(result)
+
+}
+
+
+
 
 //Корзина
 const getCartData = () => {
     return JSON.parse(localStorage.getItem('cart'));
 }
 
+const getCountGood = () => {
+    let counter = 0;
+    const countCart = getCartData();
+    for (const item in countCart) {
+        counter++;
+    }
+    return counter
+}
+
+
 const setCartData = (data) => {
     localStorage.setItem('cart', JSON.stringify(data));
     return false;
 }
 
-const openCart = () => {
-    const cartWrapper = document.querySelector('.cart');
-    const table = document.createElement('table');
-    table.classList.add('cart__good')
-    const cartEmptyMessage = document.querySelector('.cart__empty');
-    const cartGood = getCartData();
-    let totalItems = ''
+// const openCart = () => {
+//     const cartWrapper = document.querySelector('.cart');
+//     const table = document.createElement('table');
+//     table.classList.add('cart__good')
+//     const cartEmptyMessage = document.querySelector('.cart__empty');
+//     const cartGood = getCartData();
+//     let totalItems = ''
+//
+//     if (cartGood !== null) {
+//         totalItems = '<tr><th>Наименование</th><th>Цена</th><th>Артикул</th><th>Кол-во</th></tr>';
+//
+//         for (const good in cartGood) {
+//             totalItems += '<tr>';
+//             for (let i = 0; i < cartGood[good].length; i++) {
+//                 totalItems += '<td>' + cartGood[good][i] + '</td>';
+//             }
+//             totalItems += '</tr>'
+//         }
+//
+//         table.innerHTML = totalItems
+//         cartWrapper.append(table)
+//     } else {
+//         document.querySelector('.cart__good').remove();
+//     }
+// }
 
-    if (cartGood !== null) {
-        totalItems = '<tr><th>Наименование</th><th>Цена</th><th>Артикул</th><th>Кол-во</th></tr>';
-
-        for (const good in cartGood) {
-            totalItems += '<tr>';
-            for (let i = 0; i < cartGood[good].length; i++) {
-                totalItems += '<td>' + cartGood[good][i] + '</td>';
-            }
-            totalItems += '</tr>'
-        }
-
-        table.innerHTML = totalItems
-        cartWrapper.append(table)
-    } else {
-        document.querySelector('.cart__good').remove();
-    }
-}
-
-const addEventClearCart = () => {
-    const cartCloseBtn = document.querySelector('.cart__clear');
-    cartCloseBtn.addEventListener('click', function() {
-        localStorage.removeItem('cart')
-        document.querySelector('.cart__good').remove();
-        openCart();
-    })
-}
-addEventClearCart();
-
-const addEventOpenCart = () => {
-    const cartOpenBtn = document.querySelector('.cart__open');
-    cartOpenBtn.addEventListener('click', function () {
-        if (cartOpenBtn.innerHTML === 'Открыть корзину') {
-            cartOpenBtn.classList.add('open')
-            cartOpenBtn.innerHTML = 'Закрыть корзину'
-            openCart();
-        } else {
-            cartOpenBtn.classList.remove('open')
-            cartOpenBtn.innerHTML = 'Открыть корзину'
-            document.querySelector('.cart__good').remove();
-        }
-    })
-}
-addEventOpenCart()
+// const addEventClearCart = () => {
+//     const cartCloseBtn = document.querySelector('.cart__clear');
+//     cartCloseBtn.addEventListener('click', function() {
+//         localStorage.removeItem('cart')
+//         document.querySelector('.cart__good').remove();
+//         openCart();
+//     })
+// }
+// addEventClearCart();
+//
+// const addEventOpenCart = () => {
+//     const cartOpenBtn = document.querySelector('.cart__open');
+//     cartOpenBtn.addEventListener('click', function () {
+//         if (cartOpenBtn.innerHTML === 'Открыть корзину') {
+//             cartOpenBtn.classList.add('open')
+//             cartOpenBtn.innerHTML = 'Закрыть корзину'
+//             openCart();
+//         } else {
+//             cartOpenBtn.classList.remove('open')
+//             cartOpenBtn.innerHTML = 'Открыть корзину'
+//             document.querySelector('.cart__good').remove();
+//         }
+//     })
+// }
+// addEventOpenCart()
 
 
 //Фичи
 const setRubles = (price) => {
     const result = [];
     for (let i = 0; i < price.length; i++) {
-        if (result.length === 0) {
-            result.push(price[0] + ' ');
-        } else {
+        if(price.length === 5) {
             result.push(price[i])
+            result.push(price[i + 1] + ' ')
         }
-
+        result.push(price[i])
     }
     result.push(' руб.')
     return result.join('');
 }
-
 
 const getProductPhotos = (similarPhoto) => {
     let result = '';
