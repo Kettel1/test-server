@@ -13,14 +13,27 @@ const fetching = async () => {
 
 fetching()
 
-const renderInfo = (products) => {
-    const product = document.querySelector('.product');
+const checkGoodInCart = async (id) => {
+    try {
+        const response = await fetch(urlCart);
+        const data = await response.json();
+        const cardFind = !!data.find((item) => String(item.id) === String(id))
+        return cardFind
+    } catch (e) {
+        console.log(e);
+    }
+};
 
+
+const renderInfo = async (products) => {
+    const product = document.querySelector('.product');
     const maxItems = 3;
     const loadItems = 3;
 
     // Render good
-    products.forEach((item, index) => {
+    for (const item of products) {
+        const index = products.indexOf(item);
+        // console.log('При рендере id ' + item.id)
 
         const div = document.createElement('div');
         div.id = item.id
@@ -40,27 +53,32 @@ const renderInfo = (products) => {
 
         <div class="product__info">
             <h2 class="product__title">${item.title}</h2>
-            <p class="product__price"><span class="product__price__value">${setRubles(item.price)}</span></p>
+            <p class="product__price"><span class="product__price__value">${new Intl.NumberFormat('ru-RU').format(item.price)} руб.</span></p>
             <p class="product__size">${item.size}</p>
         </div>
 
         <div class="product__photos">
+
               ${getProductPhotos(item.productPhotos)}
             <div class="product__button__wrapper">
-                <button type="submit" class="product__cart"><span class="visually-hidden">Добавить в корзину</span></button>
+                ${await checkGoodInCart(item.id)
+                    .then(r => {
+                         if (r) {
+                            return '<button type="submit" class="product__cart--added">В корзине</button>'
+                         } else {
+                             return '<button type="submit" class="product__cart"><span class="visually-hidden">Добавить в корзину</span></button>'
+                         }
+                        })}
             </div>
         </div>`
         product.append(div);
-    });
-
+    }
 
     // Pagination
     const btn = document.createElement('button');
     btn.classList.add('product__add-more')
     btn.innerHTML = 'Показать еще';
     product.append(btn)
-
-    const hiddenItems = Array.from(document.querySelectorAll(".product__wrapper--hidden"))
 
     btn.addEventListener('click', function () {
         [].forEach.call(document.querySelectorAll(".product__wrapper--hidden"),
@@ -90,6 +108,12 @@ const renderInfo = (products) => {
                 const itemPrice = parentBox.querySelector('.product__price__value').innerHTML
                 const itemBtn = parentBox.querySelector('.product__cart')
                 itemBtn.classList.replace('product__cart', 'product__cart--added')
+                submit('POST', {
+                    "id": itemId,
+                    "title": itemTitle,
+                    "price": itemPrice,
+                    "count": 1,
+                })
                 itemBtn.innerHTML = 'В корзине';
 
                 if (cartData.hasOwnProperty(itemId)) {
@@ -107,28 +131,25 @@ const renderInfo = (products) => {
     })
 }
 
+
 const submit = async (method, body) => {
     const response = await fetch(urlCart, {
         method: method,
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-
         body: JSON.stringify(body),
     })
 
     let result = await response.json();
     console.log(result)
-
 }
-
-
-
 
 //Корзина
 const getCartData = () => {
     return JSON.parse(localStorage.getItem('cart'));
 }
+
 
 const getCountGood = () => {
     let counter = 0;
@@ -199,18 +220,6 @@ const setCartData = (data) => {
 
 
 //Фичи
-const setRubles = (price) => {
-    const result = [];
-    for (let i = 0; i < price.length; i++) {
-        if(price.length === 5) {
-            result.push(price[i])
-            result.push(price[i + 1] + ' ')
-        }
-        result.push(price[i])
-    }
-    result.push(' руб.')
-    return result.join('');
-}
 
 const getProductPhotos = (similarPhoto) => {
     let result = '';
