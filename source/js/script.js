@@ -1,29 +1,48 @@
-const url = 'http://localhost:8000/products';
-const urlCart = 'http://localhost:8000/cart'
+const itemCartCount = document.querySelector('.cart__count');
+import {urlCart, url} from "./url.js";
 
-const fetching = async () => {
+
+
+(async () => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        renderInfo(data)
+        await renderInfo(data)
     } catch (e) {
         console.log(e)
     }
-}
+})();
 
-fetching()
 
 const checkGoodInCart = async (id) => {
     try {
         const response = await fetch(urlCart);
         const data = await response.json();
-        const cardFind = !!data.find((item) => String(item.id) === String(id))
-        return cardFind
+        return !!data.find((item) => String(item.id) === String(id))
     } catch (e) {
         console.log(e);
     }
 };
 
+const getCountGood = () => {
+    let counter = 0;
+    const countCart = getCartData();
+    for (const item in countCart) {
+        counter++;
+    }
+    itemCartCount.innerHTML = counter;
+}
+
+const getCartData = () => {
+    return JSON.parse(localStorage.getItem('cart'));
+}
+
+const setCartData = (data) => {
+    localStorage.setItem('cart', JSON.stringify(data));
+    return false;
+}
+
+getCountGood()
 
 const renderInfo = async (products) => {
     const product = document.querySelector('.product');
@@ -33,8 +52,6 @@ const renderInfo = async (products) => {
     // Render good
     for (const item of products) {
         const index = products.indexOf(item);
-        // console.log('При рендере id ' + item.id)
-
         const div = document.createElement('div');
         div.id = item.id
 
@@ -48,7 +65,7 @@ const renderInfo = async (products) => {
 
         div.innerHTML = `
         <div class="product__img-wrapper">
-            <img src="img/${item.photo}" alt="${item.title}">
+            <img class="product__img" src="img/${item.photo}" alt="${item.title}">
         </div>
 
         <div class="product__info">
@@ -100,19 +117,21 @@ const renderInfo = async (products) => {
             if (!good.hasAttribute('data-card', 'true')) {
                 good.setAttribute('data-card', 'true')
                 good.disabled = true;
-
                 const cartData = getCartData() || {}
                 const parentBox = e.target.closest('.product__wrapper');
                 const itemId = parentBox.getAttribute('id');
                 const itemTitle = parentBox.querySelector('.product__title').innerHTML;
                 const itemPrice = parentBox.querySelector('.product__price__value').innerHTML
                 const itemBtn = parentBox.querySelector('.product__cart')
+                const itemImage = parentBox.querySelector('.product__img').src;
+                console.log(itemImage)
                 itemBtn.classList.replace('product__cart', 'product__cart--added')
                 submit('POST', {
                     "id": itemId,
                     "title": itemTitle,
                     "price": itemPrice,
                     "count": 1,
+                    "itemImage": itemImage,
                 })
                 itemBtn.innerHTML = 'В корзине';
 
@@ -142,29 +161,12 @@ const submit = async (method, body) => {
     })
 
     let result = await response.json();
-    console.log(result)
 }
+
+
 
 //Корзина
-const getCartData = () => {
-    return JSON.parse(localStorage.getItem('cart'));
-}
 
-
-const getCountGood = () => {
-    let counter = 0;
-    const countCart = getCartData();
-    for (const item in countCart) {
-        counter++;
-    }
-    return counter
-}
-
-
-const setCartData = (data) => {
-    localStorage.setItem('cart', JSON.stringify(data));
-    return false;
-}
 
 // const openCart = () => {
 //     const cartWrapper = document.querySelector('.cart');

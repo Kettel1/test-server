@@ -1,0 +1,45 @@
+.cart {
+  width: 1366px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0 35px;
+  background-color: #f6f6f6;
+  height: 100%;
+  flex-direction: column;
+}
+
+.cart__wrapper {
+  display: flex;
+  box-shadow: 2px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 8px;
+  background: #fff;
+  width: 80%;
+  margin-bottom: 15px;
+}
+
+.cart__good-id {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.cart__good-name {
+  margin: 0;
+}
+
+.cart__good-price {
+  margin-left: 20px;
+  margin-top: 9px;
+}
+
+.cart-buttons {
+  margin-top: 60px;
+  margin-left: 30px;
+}
+
+.cart__good-wrapper {
+  display: flex;
+  padding:30px;
+}
