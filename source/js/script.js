@@ -1,7 +1,5 @@
 import {urlCart, url} from "./url.js";
 
-
-
 (async () => {
     try {
         const response = await fetch(url);
@@ -12,6 +10,7 @@ import {urlCart, url} from "./url.js";
         console.log(e)
     }
 })();
+
 
 const checkGoodInCart = async (id) => {
     try {
@@ -37,6 +36,8 @@ const renderInfo = async (products) => {
     // Render good
     for (const item of products) {
         const index = products.indexOf(item);
+        // console.log('При рендере id ' + item.id)
+
         const div = document.createElement('div');
         div.id = item.id
 
@@ -95,7 +96,6 @@ const renderInfo = async (products) => {
             })
     })
 
-
     const itemBox = document.querySelectorAll('.product__wrapper');
 
     itemBox.forEach((good) => {
@@ -106,8 +106,7 @@ const renderInfo = async (products) => {
                 const itemTitle = parentBox.querySelector('.product__title').innerHTML;
                 const itemPrice = parentBox.querySelector('.product__price__value').innerHTML
                 const itemBtn = parentBox.querySelector('.product__cart')
-                const itemImage = parentBox.querySelector('.product__img').src;
-
+                const itemImage = parentBox.querySelector('.product__img').getAttribute('src')
                 itemBtn.classList.replace('product__cart', 'product__cart--added')
                 await submit('POST', {
                     "id": itemId,
@@ -121,13 +120,14 @@ const renderInfo = async (products) => {
                 cartCount.innerHTML = await getCountGood()
                 itemBtn.innerHTML = 'В корзине';
             }
+
         })
     })
 }
 
 
 const submit = async (method, body) => {
-    const response = await fetch(urlCart, {
+    return await fetch(urlCart, {
         method: method,
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -135,6 +135,7 @@ const submit = async (method, body) => {
         body: JSON.stringify(body),
     })
 }
+
 
 //Фичи
 

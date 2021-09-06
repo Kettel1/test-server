@@ -24,7 +24,7 @@ const cartDataRender = async () => {
             <div class="cart__good-wrapper">
 
                 <div class='cart__good-info'>
-                    <p class="cart__good-id">Арткул: <span>${item.id}</span></p>
+                    <p class="cart__good-id">Арткул: <span class="cart__good-id-value">${item.id}</span></p>
                     <h2 class="cart__good-name">${item.title}</h2>
                     <button class="cart-good__button-delete">Удалить</button>
 
@@ -46,21 +46,36 @@ const cartDataRender = async () => {
     const totalPriceValueSelectors = Array.from(document.querySelectorAll('.cart__good-price'));
     let totalPriceValue = 0;
     for (const item of totalPriceValueSelectors) {
+        console.log(item);
         const arrValue = +item.innerHTML.match(/(\d)/g).join('')
         totalPriceValue += arrValue
     }
-
     document.querySelector('.cart__total-count').innerHTML = totalPriceValueSelectors.length;
     document.querySelector('.cart__total-value').innerHTML = totalPriceValue + " ₽";
+    // Total price
+
+    // Delete item from DB
+    const deleteItem = Array.from(document.querySelectorAll('.cart-good__button-delete'))
+    for (const btn of deleteItem) {
+        btn.addEventListener('click', async event => {
+            const parentBox = event.target.closest('.cart__good-info');
+            const item = event.target.closest('.cart__inner');
+            item.remove()
+
+            const id = parentBox.querySelector('.cart__good-id-value').innerHTML;
+            await deleteData(id, urlCart);
+
+        })
+    }
 
 
-// document.addEventListener('click', function (e) {
-//     if (e.target.classList.contains("count-buttons__button_plus")) {
-//         ++e.target.parentElement.querySelector("input").value;
-//     } else if (e.target.classList.contains("count-buttons__button_minus")) {
-//         --e.target.parentElement.querySelector("input").value;
-//     }
-// })
+}
+
+function deleteData(item, url) {
+    return fetch(url + '/' + item, {
+        method: 'delete'
+    })
+        .then(response => response.json());
 }
 
 cartDataRender()

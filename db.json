@@ -152,35 +152,6 @@
       ]
     }
   ],
-  "cart": [
-    {
-      "id": "3",
-      "title": "Кресло-качалка",
-      "price": "1 599 ₽",
-      "count": 1,
-      "itemImage": "http://localhost:3000/img/catalog-image.png"
-    },
-    {
-      "id": "2",
-      "title": "Кресло ARONIA, розовый",
-      "price": "4 599 ₽",
-      "count": 1,
-      "itemImage": "http://localhost:3000/img/catalog-image.png"
-    },
-    {
-      "id": "1",
-      "title": "Декоративный куст, с шикарными листьями, горшком",
-      "price": "2 299 ₽",
-      "count": 1,
-      "itemImage": "http://localhost:3000/img/catalog-image.png"
-    },
-    {
-      "id": "5",
-      "title": "Кресло-качалка",
-      "price": "1 299 ₽",
-      "count": 1,
-      "itemImage": "http://localhost:3000/img/catalog-image.png"
-    }
-  ],
+  "cart": [],
   "order": []
 }
