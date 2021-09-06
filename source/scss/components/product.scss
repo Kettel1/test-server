@@ -3,6 +3,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  color: #151528;
 }
 
 .visually-hidden {
@@ -12,6 +14,7 @@ body {
   height: 1px;
   margin: -1px;
 }
+
 
 .product {
   width: 1366px;
@@ -28,6 +31,11 @@ body {
   margin-top: 30px;
   margin-right: 25px;
   display: block;
+  background: white;
+  box-shadow: 2px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 
   &--hidden {
     display: none;
@@ -36,7 +44,7 @@ body {
 }
 
 .product__img-wrapper {
-  background-color: #F6F6F6;
+  background: white;
   padding: 15px;
 }
 
@@ -45,11 +53,15 @@ body {
   font-weight: 300;
   font-size: 14px;
   line-height: 20px;
-  max-width: 232px;
+  max-width: 220px;
+  margin: 0
 }
 
 .product__info {
   position: relative;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .product__price {
@@ -60,7 +72,7 @@ body {
   margin: 0;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 20px;
 }
 
 .product__size {
@@ -72,9 +84,10 @@ body {
 
 .product__photos {
   display: flex;
-  margin-top: 17px;
   position: relative;
   align-items: center;
+  margin-top: auto;
+  padding: 5px 15px 20px;
 }
 
 .product__photos__link {
@@ -87,9 +100,9 @@ body {
 .product__cart {
   border: none;
   background-color: transparent;
-  background-image: url("../img/catalog-card.svg");
-  height: 21px;
-  width: 17px;
+  background-image: url("../img/cart.svg");
+  height: 28px;
+  width: 28px;
   background-size: 100%;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -104,9 +117,7 @@ body {
 }
 
 .product__button__wrapper{
-  position: absolute;
-  top: 3px;
-  right: 0;
+  margin-left: auto;
 }
 
 .product__photos__frame {
@@ -129,7 +140,7 @@ body {
 
 .product__add-more {
   display: block;
-padding: 10px;
+  padding: 10px;
   background: transparent;
   border: 1px solid black;
   position: absolute;
@@ -137,13 +148,4 @@ padding: 10px;
   left:50%;
   margin-left:-15%;
   cursor: pointer;
-}
-
-.cart__empty {
-  display: none;
-}
-
-table td, table th {
-  padding: 10px;
-  border: 1px solid grey;
 }
