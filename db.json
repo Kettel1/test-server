@@ -3,8 +3,8 @@
     {
       "id": 1,
       "photo": "catalog-image.png",
-      "title": "Декоративный куст, с шикарными листьями, горшком",
-      "price": "2299",
+      "title": "Дыра матери кучи",
+      "price": "1",
       "size": "120 x 212 x 46",
       "productPhotos": [
         "catalog-recomended.png",
@@ -154,14 +154,33 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "title": "Декоративный куст, с шикарными листьями, горшком",
-      "price": "2 299 ₽",
-      "count": 1,
+      "id": "2",
+      "title": "Кресло ARONIA, розовый",
+      "price": "4 599 ₽",
+      "count": 2,
+      "itemImage": "img/catalog-image.png"
+    },
+    {
+      "id": "3",
+      "title": "Кресло-качалка",
+      "price": "1 599 ₽",
+      "count": 4,
+      "itemImage": "img/catalog-image.png"
+    },
+    {
+      "id": "6",
+      "title": "Кресло-качалка",
+      "price": "1 399 ₽",
+      "count": "2",
+      "itemImage": "img/catalog-image.png"
+    },
+    {
+      "id": "5",
+      "title": "Кресло-качалка",
+      "price": "1 299 ₽",
+      "count": "2",
       "itemImage": "img/catalog-image.png"
     }
   ],
-  "order": [
-
-  ]
+  "order": []
 }

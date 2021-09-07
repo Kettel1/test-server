@@ -24,7 +24,7 @@ const cartDataRender = async () => {
 
                 <div class="count-buttons">
                     <button class="count-buttons__button count-buttons__button_minus">-</button>
-                    <input value="${item.count}" class="count-buttons__input">
+                    <input id="${item.id}"  value="${item.count}" class="count-buttons__input">
                     <button class="count-buttons__button count-buttons__button_plus">+</button>
                 </div>
 
@@ -45,18 +45,28 @@ const cartDataRender = async () => {
 
         minusBtn.forEach((item) => {
             item.addEventListener('click', async e => {
-                if (input.value > 1) {
-                    input.value--;
-                    await getPatch(input.value, 1)
+                let inputValue = e.target.nextElementSibling.value
+                const id = e.target.nextElementSibling.id
+                if (inputValue > 1) {
+                    inputValue--
+                    e.target.nextElementSibling.value--;
+                    await submit('PATCH', {
+                        count: inputValue,
+                    }, urlCart + `/${id}`)
                 }
             })
         })
 
         plusBtn.forEach((item) => {
             item.addEventListener('click', async e => {
-                if (input.value <= maxItemInDataBase) {
-                    input.value++;
-                    await getPatch(input.value, 2)
+                let inputValue = e.target.previousElementSibling.value
+                const id = e.target.previousElementSibling.id
+                if (inputValue <= maxItemInDataBase) {
+                    inputValue++;
+                    e.target.previousElementSibling.value++;
+                    await submit('PATCH', {
+                        count: inputValue,
+                    }, urlCart + `/${id}`)
                 }
             })
         })
@@ -133,12 +143,11 @@ const getOrder = async () => {
 
 getOrder()
 
-const getPatch = async (count, id) => {
-    await submit('PATCH', {
-        count: count,
-    }, urlCart + `/${id}`)
-}
+// const getPatch = async (count, id) => {
+//     await submit('PATCH', {
+//         count: count,
+//     }, urlCart + `/${id}`)
+// }
 
-getPatch();
 
 cartDataRender()

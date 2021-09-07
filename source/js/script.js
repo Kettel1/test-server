@@ -112,7 +112,7 @@ const renderInfo = async (products) => {
                     "id": itemId,
                     "title": itemTitle,
                     "price": itemPrice,
-                    "count": 1,
+                    "count": "1",
                     "itemImage": itemImage,
                 }, urlCart)
 
@@ -124,10 +124,6 @@ const renderInfo = async (products) => {
         })
     })
 }
-
-
-
-
 
 //Фичи
 
