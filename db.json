@@ -152,6 +152,16 @@
       ]
     }
   ],
-  "cart": [],
-  "order": []
+  "cart": [
+    {
+      "id": "1",
+      "title": "Декоративный куст, с шикарными листьями, горшком",
+      "price": "2 299 ₽",
+      "count": 1,
+      "itemImage": "img/catalog-image.png"
+    }
+  ],
+  "order": [
+
+  ]
 }

@@ -1,4 +1,4 @@
-import {urlCart, url} from "./url.js";
+import {urlCart, url, submit} from "./url.js";
 
 (async () => {
     try {
@@ -114,7 +114,7 @@ const renderInfo = async (products) => {
                     "price": itemPrice,
                     "count": 1,
                     "itemImage": itemImage,
-                })
+                }, urlCart)
 
                 const cartCount = document.querySelector('.cart__count');
                 cartCount.innerHTML = await getCountGood()
@@ -126,15 +126,7 @@ const renderInfo = async (products) => {
 }
 
 
-const submit = async (method, body) => {
-    return await fetch(urlCart, {
-        method: method,
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(body),
-    })
-}
+
 
 
 //Фичи
