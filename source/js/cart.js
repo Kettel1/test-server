@@ -1,4 +1,4 @@
-import {urlCart, submit, urlOrder} from "./url.js";
+import {urlCart, submit, url, urlOrder} from "./url.js";
 
 const cartDataRender = async () => {
     const response = await fetch(urlCart);
@@ -24,11 +24,11 @@ const cartDataRender = async () => {
 
                 <div class="count-buttons">
                     <button class="count-buttons__button count-buttons__button_minus">-</button>
-                    <input id="${item.id}"  value="${item.count}" class="count-buttons__input">
+                    <input id="${item.id}" value="${item.count}" class="count-buttons__input">
                     <button class="count-buttons__button count-buttons__button_plus">+</button>
                 </div>
 
-                <p class="cart__good-price">${item.price}</p>
+                <p class="cart__good-price">${totalPriceItem(item.price, item.count)}</p>
             </div>`
 
         cart.append(div);
@@ -36,12 +36,8 @@ const cartDataRender = async () => {
     // Counter
     const counterGood = async () => {
         const maxItemInDataBase = 100;
-
         const minusBtn = document.querySelectorAll('.count-buttons__button_minus');
         const plusBtn = document.querySelectorAll('.count-buttons__button_plus');
-        const input = document.querySelector('.count-buttons__input');
-        const data = await fetch(urlCart);
-        const response = await data.json()
 
         minusBtn.forEach((item) => {
             item.addEventListener('click', async e => {
@@ -49,10 +45,11 @@ const cartDataRender = async () => {
                 const id = e.target.nextElementSibling.id
                 if (inputValue > 1) {
                     inputValue--
-                    e.target.nextElementSibling.value--;
                     await submit('PATCH', {
                         count: inputValue,
                     }, urlCart + `/${id}`)
+                    e.target.nextElementSibling.value--;
+
                 }
             })
         })
@@ -60,13 +57,32 @@ const cartDataRender = async () => {
         plusBtn.forEach((item) => {
             item.addEventListener('click', async e => {
                 let inputValue = e.target.previousElementSibling.value
-                const id = e.target.previousElementSibling.id
+                const id = e.target.previousElementSibling.id;
+
+                let startPrice = '';
+
+                const response = await fetch(urlCart)
+                const data = await response.json();
+
+                for (const item of data) {
+                    if(item.id === id) {
+                        startPrice = item.price;
+                    }
+                }
+
+                const wrapper = e.target.closest('.cart__good-wrapper');
+
                 if (inputValue <= maxItemInDataBase) {
                     inputValue++;
-                    e.target.previousElementSibling.value++;
+
                     await submit('PATCH', {
                         count: inputValue,
                     }, urlCart + `/${id}`)
+
+                    e.target.previousElementSibling.value++;
+                    const result = startPrice.match(/(\d)/g).join('') * inputValue;
+                    wrapper.querySelector('.cart__good-price').innerHTML = result;
+                    totalPrice();
                 }
             })
         })
@@ -77,7 +93,7 @@ const cartDataRender = async () => {
     // Total price
     const totalPrice = () => {
         const totalPriceValueSelectors = Array.from(document.querySelectorAll('.cart__good-price'));
-        let totalPriceValue = 0;
+        const totalCountGoodSelectors = Array.from(document.querySelectorAll('.count-buttons__input'));
 
         if (totalPriceValueSelectors.length === 0) {
             const h2 = document.createElement('h2');
@@ -85,16 +101,26 @@ const cartDataRender = async () => {
             cart.append(h2)
         }
 
+        let totalCountGood = 0;
+
+        for(const value of totalCountGoodSelectors) {
+            totalCountGood += +value.value
+        }
+
+
+        let totalPriceValue = 0;
+
         for (const item of totalPriceValueSelectors) {
             const arrValue = +item.innerHTML.match(/(\d)/g).join('')
             totalPriceValue += arrValue
         }
 
-        document.querySelector('.cart__total-count').innerHTML = totalPriceValueSelectors.length;
+        document.querySelector('.cart__total-count').innerHTML = "Количество товара: " + totalCountGood;
         document.querySelector('.cart__total-value').innerHTML = totalPriceValue + " ₽";
     }
     totalPrice()
     // Total price
+
 
     // Delete item from DB
     const deleteItem = () => {
@@ -115,7 +141,7 @@ const cartDataRender = async () => {
 
 const totalPriceItem = (price, factor) => {
     const result = price.match(/(\d)/g).join('') * factor;
-    return result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' P'
+    return result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' ₽'
 }
 
 async function deleteData(item, url) {
@@ -142,12 +168,6 @@ const getOrder = async () => {
 }
 
 getOrder()
-
-// const getPatch = async (count, id) => {
-//     await submit('PATCH', {
-//         count: count,
-//     }, urlCart + `/${id}`)
-// }
 
 
 cartDataRender()
