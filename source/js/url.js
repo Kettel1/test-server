@@ -1,4 +1,4 @@
-export const url = 'http://localhost:8000/products';
+export const urlProducts = 'http://localhost:8000/products';
 export const urlCart = 'http://localhost:8000/cart';
 export const urlOrder = 'http://localhost:8000/order';
 

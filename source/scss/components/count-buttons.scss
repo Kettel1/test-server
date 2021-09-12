@@ -1,8 +1,9 @@
 .count-buttons {
   display: flex;
-  margin-top: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: auto;
+  width: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .count-buttons__input {
@@ -19,6 +20,18 @@
   color: #666;
   -webkit-appearance: none;
   border-radius: 0;
+
+  &[type='number']::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'],
+  &[type='number']:hover,
+  &[type='number']:focus {
+    -moz-appearance: textfield;
+  }
 }
 
 .count-buttons__button {
@@ -52,15 +65,4 @@
   border-left: none;
 }
 
-.cart-good__button-delete {
-  background: transparent;
-  border: none;
-  opacity: 0.6;
-  margin: 0;
-  padding: 10px 0;
-  cursor: pointer;
-}
 
-.cart__good-id {
-  padding: 10px 0;
-}

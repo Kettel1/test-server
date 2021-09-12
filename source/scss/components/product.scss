@@ -2,9 +2,13 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #f6f6f6;
   color: #151528;
+}
+
+*, *:after, a:before, button {
+  font-family: "Montserrat", sans-serif;
 }
 
 .visually-hidden {
@@ -28,9 +32,7 @@ body {
 .product__wrapper {
   max-width: 333px;
   margin-bottom: 25px;
-  margin-top: 30px;
   margin-right: 25px;
-  display: block;
   background: white;
   box-shadow: 2px 4px 8px 0px rgba(34, 60, 80, 0.2);
   border-radius: 8px;
@@ -46,6 +48,11 @@ body {
 .product__img-wrapper {
   background: white;
   padding: 15px;
+}
+
+.product__img {
+  width: 300px;
+  height: 200px;
 }
 
 .product__title {
@@ -113,6 +120,7 @@ body {
     text-transform: uppercase;
     padding: 5px;
     cursor: auto;
+    border: none;
   }
 }
 

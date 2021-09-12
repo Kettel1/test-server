@@ -2,10 +2,10 @@
   "products": [
     {
       "id": 1,
-      "photo": "catalog-image.png",
-      "title": "Денис еблан",
-      "price": "199",
-      "size": "120 x 212 x 46",
+      "photo": "good-1.jpg",
+      "title": "Кресло-качалка",
+      "price": "1999",
+      "size": "163 x 452 x 25",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -17,10 +17,10 @@
     },
     {
       "id": 2,
-      "photo": "catalog-image.png",
-      "title": "Кресло ARONIA, розовый",
-      "price": "4599",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "12590",
+      "size": "158 x 213 x 12",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -30,10 +30,10 @@
     },
     {
       "id": 3,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1599",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "14999",
+      "size": "153 x 383 x 65",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -45,10 +45,10 @@
     },
     {
       "id": 4,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1199",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "12199",
+      "size": "189 x 124 x 25",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -57,10 +57,10 @@
     },
     {
       "id": 5,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1299",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "13590",
+      "size": "182 x 273 x 75",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -69,10 +69,10 @@
     },
     {
       "id": 6,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1399",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "14190",
+      "size": "137 x 234 x 68",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -81,10 +81,10 @@
     },
     {
       "id": 7,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1999",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "14900",
+      "size": "220 x 152 x 16",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -93,10 +93,10 @@
     },
     {
       "id": 8,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1899",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "19590",
+      "size": "134 x 202 x 96",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -105,10 +105,10 @@
     },
     {
       "id": 9,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1799",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "17900",
+      "size": "220 x 152 x 46",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -117,10 +117,10 @@
     },
     {
       "id": 10,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1699",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "14900",
+      "size": "120 x 252 x 46",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -129,10 +129,10 @@
     },
     {
       "id": 11,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1699",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "16999",
+      "size": "123 x 212 x 10",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -141,10 +141,58 @@
     },
     {
       "id": 12,
-      "photo": "catalog-image.png",
-      "title": "Кресло-качалка",
-      "price": "1699",
-      "size": "120 x 212 x 46",
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "15900",
+      "size": "125 x 212 x 20",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 13,
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "17900",
+      "size": "220 x 152 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 14,
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "14900",
+      "size": "120 x 252 x 46",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 15,
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "16999",
+      "size": "123 x 212 x 10",
+      "productPhotos": [
+        "catalog-recomended.png",
+        "catalog-recomended.png",
+        "catalog-recomended.png"
+      ]
+    },
+    {
+      "id": 16,
+      "photo": "good-2.jpg",
+      "title": "Кровать Aronia",
+      "price": "15900",
+      "size": "125 x 212 x 20",
       "productPhotos": [
         "catalog-recomended.png",
         "catalog-recomended.png",
@@ -152,28 +200,13 @@
       ]
     }
   ],
-  "cart": [
+  "cart": [],
+  "order": [
     {
-      "id": "3",
       "title": "Кресло-качалка",
-      "price": "1 599 ₽",
-      "count": 10,
-      "itemImage": "img/catalog-image.png"
-    },
-    {
-      "id": "6",
-      "title": "Кресло-качалка",
-      "price": "1 399 ₽",
-      "count": 2,
-      "itemImage": "img/catalog-image.png"
-    },
-    {
-      "id": "5",
-      "title": "Кресло-качалка",
-      "price": "1 299 ₽",
-      "count": 1,
-      "itemImage": "img/catalog-image.png"
+      "id": "1",
+      "price": "1 999 ₽",
+      "count": 1
     }
-  ],
-  "order": []
+  ]
 }
